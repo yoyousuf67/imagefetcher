@@ -1,4 +1,4 @@
-require('dotenv').config()
+require('dotenv').config({path: __dirname + '/.env'});
 var fs = require('fs');
 var request = require('request');
 var request2 = require("request");
@@ -13,34 +13,12 @@ var GoogleCloudStorage = Promise.promisifyAll(require('@google-cloud/storage'));
 var nope=55;
 var storage = GoogleCloudStorage({
   projectId: process.env.MYAPIKEY,
-  keyFilename: 'My Project 12542-d50e4c7874c8.json'
+  keyFilename:process.env.FILENAME
 })
 
 var BUCKET_NAME = 'imagescraper1'
 // https://googlecloudplatform.github.io/google-cloud-node/#/docs/google-cloud/0.39.0/storage/bucket
 var myBucket = storage.bucket(BUCKET_NAME)
-
-// check if a file exists in bucket
-// https://googlecloudplatform.github.io/google-cloud-node/#/docs/google-cloud/0.39.0/storage/file?method=exists
-/*var file = myBucket.file('myImage.png')
-file.existsAsync()
-  .then(exists => {
-    if (exists) {
-      // file exists in bucket
-    }
-  })
-  .catch(err => {
-     return err
-  })
-    */
-    
-    
-// get public url for file
-/*var getPublicThumbnailUrlForItem = file_name => {
-  return `https://storage.googleapis.com/${BUCKET_NAME}/${file_name}`;
-}*/
-
-
 
 app.get('/store',function(req,res){
 if(nope==1){
@@ -204,8 +182,8 @@ var options = { method: 'GET',
   url: 'https://www.googleapis.com/customsearch/v1',
   qs: 
    { q: input,
-     cx:'003870522567715816219:y5tc48okc6u',
-     key:'AIzaSyCqs255ra4XX74qBU2iDjnwrGDeMNq-E98\t',
+     cx:process.env.CX,
+     key:process.env.KEY,
      searchType: 'image'
 	 },
   headers: 
@@ -216,8 +194,8 @@ var options2 = { method: 'GET',
   url: 'https://www.googleapis.com/customsearch/v1',
   qs: 
    { q: input,
-      cx:'003870522567715816219:y5tc48okc6u',
-     key:'AIzaSyCqs255ra4XX74qBU2iDjnwrGDeMNq-E98\t',
+      cx:process.env.CX,
+     key:process.env.KEY,
      searchType: 'image',
      start: '11',
 	 num:  '5'
