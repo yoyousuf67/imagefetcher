@@ -141,12 +141,16 @@ storage
 
 var download =function(uri, filename, callback){
 	request.head(uri, function(err, res, body){
-    console.log('content-type:', res.headers['content-type']);
-    console.log('content-length:', res.headers['content-length'])
+    //console.log('content-type:', res.headers['content-type']);
+    //console.log('content-length:', res.headers['content-length'])
+	
 	var picStream = fs.createWriteStream(filename);
 	picStream.on('close', function() {
 	  console.log('file done');
 	  callback();
+	});
+		picStream.on('error', function() {
+		console.log('error');
 	});
 	request(uri).pipe(picStream);
   });
@@ -166,18 +170,21 @@ var download =function(uri, filename, callback){
 var input,cookie_id;
 app.get('/imgdownload/:input', function (req, res) {	
 var input=req.params.input;
-
+console.log(input);
 var cookie_id = req.cookies.randomcookiename;
+console.log(cookie_id);
 		nope=55;
 		if(cookie_id!=undefined){
 			console.log("here");
 			var arrq=cookie_id.split("/");
-			 for(p=0;p<arrq.length-1;p++){
+			 for(p=0;p<arrq.length;p++){
 				 if(arrq[p]==input){
 					  nope=1;
+					  console.log(nope);
 					 break;
 				 }
-				 else{nope=55;}
+				 else{nope=55;
+					console.log(nope);}
 				}}
 			 if(nope==1){
 				 res.send("Download Success").status(200);
