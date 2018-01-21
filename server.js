@@ -170,7 +170,7 @@ var input=req.params.input;
 var cookie_id = req.cookies.randomcookiename;
 		nope=55;
 		if(cookie_id!=undefined){
-		
+			console.log("here");
 			var arrq=cookie_id.split("/");
 			 for(p=0;p<arrq.length-1;p++){
 				 if(arrq[p]==input){
