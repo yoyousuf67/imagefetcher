@@ -205,7 +205,7 @@ var options2 = { method: 'GET',
 
 var downloader = new Promise(function(resolve,reject){
 		request(options, function (error, response, body) {
-		if (error) throw new Error(error);
+		if (error) {console.log(error);}
 
 	  var jsonData = JSON.parse(body);
 	  //console.log(body);
@@ -235,7 +235,7 @@ var downloader = new Promise(function(resolve,reject){
 		.then(function(){
 				console.log("yolo");
 				request2(options2, function (error, response, body) {
-				  if (error) throw new Error(error);
+				  if (error) {console.log(error);}
 						  var jsonData = JSON.parse(body);
 				  //console.log(body);
 					for (var i = 0, temp=0; i < jsonData.items.length; i++) {
@@ -298,7 +298,8 @@ app.get('/bw', function (req, res){
 					 .greyscale()                 // set greyscale
 					 .write(fileName); // save
 						console.log("haa");
-					console.log(c+' c '+files.length+' fl' )
+					console.log(c+' c '+files.length+' fl' );
+					setTimeout(function(){c=files.length},35000);
 						if(c==files.length){
 				res.send("Compression and B/W filter successful").status(200);
 			}
