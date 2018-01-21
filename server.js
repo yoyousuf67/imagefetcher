@@ -168,6 +168,9 @@ app.get('/imgdownload/:input', function (req, res) {
 var input=req.params.input;
 
 var cookie_id = req.cookies.randomcookiename;
+		nope=55;
+		if(cookie_id!=undefined){
+		
 			var arrq=cookie_id.split("/");
 			 for(p=0;p<arrq.length-1;p++){
 				 if(arrq[p]==input){
@@ -175,12 +178,12 @@ var cookie_id = req.cookies.randomcookiename;
 					 break;
 				 }
 				 else{nope=55;}
-			 }
+				}}
 			 if(nope==1){
 				 res.send("Download Success").status(200);
 			 }
 			 else{
-				 if(cookie_id==undefined&&no!=1){
+				 if(cookie_id==undefined&&nope!=1){
 			 cookie_id=input;
 		 }else{
 					 cookie_id=cookie_id+'/'+input;
@@ -343,10 +346,12 @@ var htmlTemplate=`<li><a href="/displaying/${somename}" target="_blank">${somena
 app.get('/history',function(req,res){
 	var template="";
 	var cookie_id = req.cookies.randomcookiename;
+	if(cookie_id!=undefined){
 	var arr=cookie_id.split("/");
 	for(var index=0, len=arr.length;index<len;++index){
 		//console.log(arr[index]);
 		template=template+createTemplate(arr[index]);
+	}
 	}
 	res.send(template);
 });
