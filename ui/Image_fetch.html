@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Image Store</title>
+  </head>
+  <body>	
+		<h1>Homepage</h1>
+		  Input image to be stored: <input type="text" id='input' >
+		  
+		  <p id="count"><button type="submit" onClick="myFun()">Download Image</button> </p>
+		  
+		<br/><br/>
+		<a href="/historypage">View Your Search History</a>
+		
+
+<script>
+var myvar=0;
+var myFun= function(){
+var span=document.getElementById('count');
+span.innerHTML="Please wait while the request is being processed";
+data=document.getElementById('input').value;
+console.log("input is "+data);
+//create a request object
+var request=new XMLHttpRequest();
+
+//capture response and store variable
+
+request.onreadystatechange=function(){
+  if(request.readyState==XMLHttpRequest.DONE){
+      //take action
+      if(request.status==200){
+	  var res=request.responseText
+      var span=document.getElementById('count');
+		span.innerHTML=res;
+		if(myvar<3){
+		++myvar;
+		myFun2();
+		}
+      }
+  }  
+  //not done ignore it
+}; 
+//make a request
+if(myvar==0){
+request.open('GET','/imgdownload/'+data,true);
+request.send(null);
+ };}
+ 
+ var myFun2 = function(){
+ var span=document.getElementById('count');
+ span.innerHTML=span.innerHTML+'<br>'+"Please wait while the request is being processed";
+ var request=new XMLHttpRequest();
+ request.onreadystatechange=function(){
+  if(request.readyState==XMLHttpRequest.DONE){
+      //take action
+      if(request.status==200){
+	  var res=request.responseText
+      var span=document.getElementById('count');
+	  span.innerHTML=res;
+		if(myvar<3){
+		++myvar;
+		myFun3();
+		}
+      }
+  }  
+  //not done ignore it
+}; 
+//make a request
+if(myvar==1){
+request.open('GET','/bw',true);
+request.send(null);
+ }};
+ 
+ var myFun3 = function(){
+ var span=document.getElementById('count');
+ span.innerHTML=span.innerHTML+'<br>'+"Please wait while the request is being processed";
+ var request=new XMLHttpRequest();
+ request.onreadystatechange=function(){
+  if(request.readyState==XMLHttpRequest.DONE){
+      //take action
+      if(request.status==200){
+	  var res=request.responseText
+      var span=document.getElementById('count');
+	  span.innerHTML=res;
+		if(myvar<3){
+		myvar++;
+		}
+      }
+  }  
+  //not done ignore it
+}; 
+//make a request
+if(myvar==2){
+request.open('GET','/store',true);
+request.send(null);
+ }};
+ 
+</script>
+
+  </body>
+</html>

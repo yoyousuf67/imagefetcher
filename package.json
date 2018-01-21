@@ -1,0 +1,26 @@
+{
+  "name": "Fetch_Image",
+  "version": "0.1.0",
+  "description": "Fetch images and store them",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@google-cloud/storage": "^1.5.2",
+    "bluebird": "^3.5.1",
+    "cookie-parser": "^1.4.3",
+    "crypto": "^1.0.1",
+    "dotenv": "^4.0.0",
+    "express": "^4.16.2",
+    "fs": "0.0.1-security",
+    "imagemin": "^5.3.1",
+    "jimp": "^0.2.28",
+    "mongodb": "^3.0.1",
+    "morgan": "^1.7.0",
+    "path": "^0.12.7",
+    "request": "^2.83.0"
+  }
+}
