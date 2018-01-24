@@ -20,6 +20,9 @@ var BUCKET_NAME = 'imagescraper1'
 // https://googlecloudplatform.github.io/google-cloud-node/#/docs/google-cloud/0.39.0/storage/bucket
 var myBucket = storage.bucket(BUCKET_NAME)
 
+app.use(express.static('ui'));
+
+
 app.get('/store',function(req,res){
 if(nope==1){
 	res.send("Successfully uploaded files to google cloud").status(200);
@@ -350,7 +353,11 @@ app.get('/', function (req, res) {
 
 
 
-app.set('port', process.env.PORT || 8080);
+const PORT = process.env.PORT || 8080;
+app.listen(PORT, () => {
+  console.log(`App listening on port ${PORT}`);
+  console.log('Press Ctrl+C to quit.');
+});
 /*var port = 8080; // Use 8080 for local development because you might already have apache running on 80
 app.listen(8080, function () {
   console.log(`listening on port ${port}!`);
