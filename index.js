@@ -274,7 +274,6 @@ var downloader = new Promise(function(resolve,reject){
 
 
 app.get('/bw', function (req, res){
-		setTimeout(function(){
 			if(nope==1){
 				res.send("Compression and B/W filter successful").status(200);
 			}else{
@@ -318,7 +317,7 @@ app.get('/bw', function (req, res){
 		console.log("i am here");}
    })
 });
-			}}, 5000);
+			}
 });
 
 
