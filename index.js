@@ -294,6 +294,10 @@ app.get('/bw', function (req, res){
            
 		   // open a file called "lenna.png"
 			Jimp.read(fileName).then(function (img) {
+								setTimeout(function(){if(c<files.length){c=files.length+3;
+					console.log('c is ' +c);
+					res.send("Compression and B/W filter successful").status(200);}
+					},28500);
 				++c;
 				img  .resize(256,256)         // resize
 					 .quality(60)                 // set JPEG quality
@@ -301,10 +305,6 @@ app.get('/bw', function (req, res){
 					 .write(fileName); // save
 						console.log("haa");
 					console.log(c+' c '+files.length+' fl' );
-					setTimeout(function(){if(c<files.length){c=files.length+3;
-					console.log('c is ' +c);
-					res.send("Compression and B/W filter successful").status(200);}
-					},27500);
 						if(c==files.length){
 				res.send("Compression and B/W filter successful").status(200);
 			}
