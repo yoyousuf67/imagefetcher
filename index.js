@@ -297,7 +297,7 @@ app.get('/bw', function (req, res){
 								setTimeout(function(){if(c<files.length){c=files.length+15;
 					console.log('c is ' +c);
 					res.send("Compression and B/W filter successful").status(200);}
-					},26000);
+					},1000);
 				++c;
 				img  .resize(256,256)         // resize
 					 .quality(60)                 // set JPEG quality
