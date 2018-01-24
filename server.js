@@ -72,7 +72,7 @@ var someurl;
 app.get('/displaying/:someurl', function (req, res) {
 	someurl=req.params.someurl;
 	console.log("3");
-	  res.sendFile(path.join(__dirname, 'ui', 'display.html'));
+	  res.sendFile(path.join(__dirname, 'public', 'display.html'));
 
 });
 app.get('/display', function (req, res) {
@@ -117,7 +117,7 @@ storage
 	var htmlTemplate=`<li><img src="https://storage.googleapis.com/imagescraper1/${someurl}"></li>`;
       return htmlTemplate;
 	}
-	//res.sendFile(path.join(__dirname, 'ui', 'display.html'));
+	//res.sendFile(path.join(__dirname, 'public', 'display.html'));
 
 
 var download =function(uri, filename, callback){
@@ -329,7 +329,7 @@ var htmlTemplate=`<li><a href="/displaying/${somename}" target="_blank">${somena
   }
 
   app.get('/historypage', function (req, res) {
-  res.sendFile(path.join(__dirname, 'ui', 'history.html'));
+  res.sendFile(path.join(__dirname, 'public', 'history.html'));
 });
   
 app.get('/history',function(req,res){
@@ -348,7 +348,7 @@ app.get('/history',function(req,res){
 
 
 app.get('/', function (req, res) {
-  res.sendFile(path.join(__dirname, 'ui', 'image_fetch.html'));
+  res.sendFile(path.join(__dirname, 'public', 'image_fetch.html'));
 });
 
 
