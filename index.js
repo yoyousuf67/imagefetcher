@@ -1,4 +1,4 @@
-require('dotenv').config({path: __dirname + '/.env'});
+require('dotenv').config({path: process.env.PWD + '/.env'});
 var fs = require('fs');
 var request = require('request');
 var request2 = require("request");
@@ -20,7 +20,7 @@ var BUCKET_NAME = 'imagescraper1'
 // https://googlecloudplatform.github.io/google-cloud-node/#/docs/google-cloud/0.39.0/storage/bucket
 var myBucket = storage.bucket(BUCKET_NAME)
 
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(process.env.PWD, 'public')));
 
 
 app.get('/store',function(req,res){
@@ -30,7 +30,7 @@ if(nope==1){
 	
 	var po=1;
 		// upload file to bucket
-		 let folderName = path.join(__dirname,'filestore/');
+		 let folderName = path.join(process.env.PWD,'filestore/');
 		 
 			fs.readdir(folderName , (err, files) => {
 					if (err) {
@@ -72,7 +72,7 @@ var someurl;
 app.get('/displaying/:someurl', function (req, res) {
 	someurl=req.params.someurl;
 	console.log("3");
-	  res.sendFile(path.join(__dirname, 'public', 'display.html'));
+	  res.sendFile(path.join(process.env.PWD, 'public', 'display.html'));
 
 });
 app.get('/display', function (req, res) {
@@ -117,7 +117,7 @@ storage
 	var htmlTemplate=`<li><img src="https://storage.googleapis.com/imagescraper1/${someurl}"></li>`;
       return htmlTemplate;
 	}
-	//res.sendFile(path.join(__dirname, 'public', 'display.html'));
+	//res.sendFile(path.join(process.env.PWD, 'public', 'display.html'));
 
 
 var download =function(uri, filename, callback){
@@ -223,7 +223,7 @@ var downloader = new Promise(function(resolve,reject){
 			var imgid=Math.floor(100000 + Math.random() * 900000);
 			var imgpath=input+'@'+imgid+'.'+mimetype;
 			console.log(imgpath);
-					download(links, path.join(__dirname,'filestore',imgpath), function(){
+					download(links, path.join(process.env.PWD,'filestore',imgpath), function(){
 					console.log('done1');
 					++j;
 					if(j== jsonData.items.length-1){
@@ -252,7 +252,7 @@ var downloader = new Promise(function(resolve,reject){
 							var imgid=Math.floor(100000 + Math.random() * 900000);
 							var imgpath=input+'@'+imgid+'.'+mimetype;
 							console.log(imgpath+'2ha');
-									download(links, path.join(__dirname,'filestore',imgpath), function(){
+									download(links, path.join(process.env.PWD,'filestore',imgpath), function(){
 									console.log('done2');
 									++temp;
 									if(temp== jsonData.items.length-1){
@@ -279,8 +279,8 @@ app.get('/bw', function (req, res){
 				res.send("Compression and B/W filter successful").status(200);
 			}else{
 		c=0;
-		let folderName = path.join(__dirname,'filestore/'),
-		destFolder = path.join(__dirname,'bw/');
+		let folderName = path.join(process.env.PWD,'filestore/'),
+		destFolder = path.join(process.env.PWD,'bw/');
 
 		fs.readdir(folderName , (err, files) => {
 			if (err) {
@@ -329,7 +329,7 @@ var htmlTemplate=`<li><a href="/displaying/${somename}" target="_blank">${somena
   }
 
   app.get('/historypage', function (req, res) {
-  res.sendFile(path.join(__dirname, 'public', 'history.html'));
+  res.sendFile(path.join(process.env.PWD, 'public', 'history.html'));
 });
   
 app.get('/history',function(req,res){
@@ -348,7 +348,7 @@ app.get('/history',function(req,res){
 
 
 app.get('/', function (req, res) {
-  res.sendFile(path.join(__dirname, 'public', 'image_fetch.html'));
+  res.sendFile(path.join(process.env.PWD, 'public', 'image_fetch.html'));
 });
 
 
