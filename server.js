@@ -1,4 +1,4 @@
-require('dotenv').config({path:'/.env'});
+require('dotenv').config({path: __dirname + '/.env'});
 var fs = require('fs');
 var request = require('request');
 var request2 = require("request");
@@ -27,7 +27,7 @@ if(nope==1){
 	
 	var po=1;
 		// upload file to bucket
-		 let folderName = path.join('./','filestore/');
+		 let folderName = path.join(__dirname,'filestore/');
 		 
 			fs.readdir(folderName , (err, files) => {
 					if (err) {
@@ -69,7 +69,7 @@ var someurl;
 app.get('/displaying/:someurl', function (req, res) {
 	someurl=req.params.someurl;
 	console.log("3");
-	  res.sendFile(path.join('./ui', 'display.html'));
+	  res.sendFile(path.join(__dirname, 'ui', 'display.html'));
 
 });
 app.get('/display', function (req, res) {
@@ -220,7 +220,7 @@ var downloader = new Promise(function(resolve,reject){
 			var imgid=Math.floor(100000 + Math.random() * 900000);
 			var imgpath=input+'@'+imgid+'.'+mimetype;
 			console.log(imgpath);
-					download(links, path.join('./filestore',imgpath), function(){
+					download(links, path.join(__dirname,'filestore',imgpath), function(){
 					console.log('done1');
 					++j;
 					if(j== jsonData.items.length-1){
@@ -249,7 +249,7 @@ var downloader = new Promise(function(resolve,reject){
 							var imgid=Math.floor(100000 + Math.random() * 900000);
 							var imgpath=input+'@'+imgid+'.'+mimetype;
 							console.log(imgpath+'2ha');
-									download(links, path.join('./filestore',imgpath), function(){
+									download(links, path.join(__dirname,'filestore',imgpath), function(){
 									console.log('done2');
 									++temp;
 									if(temp== jsonData.items.length-1){
@@ -276,8 +276,8 @@ app.get('/bw', function (req, res){
 				res.send("Compression and B/W filter successful").status(200);
 			}else{
 		c=0;
-		let folderName = path.join('./filestore/'),
-		destFolder = path.join('./bw/');
+		let folderName = path.join(__dirname,'filestore/'),
+		destFolder = path.join(__dirname,'bw/');
 
 		fs.readdir(folderName , (err, files) => {
 			if (err) {
@@ -326,7 +326,7 @@ var htmlTemplate=`<li><a href="/displaying/${somename}" target="_blank">${somena
   }
 
   app.get('/historypage', function (req, res) {
-  res.sendFile(path.join('./ui', 'history.html'));
+  res.sendFile(path.join(__dirname, 'ui', 'history.html'));
 });
   
 app.get('/history',function(req,res){
@@ -345,7 +345,7 @@ app.get('/history',function(req,res){
 
 
 app.get('/', function (req, res) {
-  res.sendFile(path.join('./ui', 'image_fetch.html'));
+  res.sendFile(path.join(__dirname, 'ui', 'image_fetch.html'));
 });
 
 var port = 8080; // Use 8080 for local development because you might already have apache running on 80
