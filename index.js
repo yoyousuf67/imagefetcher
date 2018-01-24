@@ -259,7 +259,7 @@ var downloader = new Promise(function(resolve,reject){
 										console.log('Download Success');
 										setTimeout(function(){
 											res.cookie('randomcookiename',cookie_id, { maxAge: 345600000}).send("Download Success").status(200);
-										},10000);
+										},7000);
 							
 					}
 									});
@@ -304,7 +304,7 @@ app.get('/bw', function (req, res){
 					setTimeout(function(){if(c<files.length){c=files.length+3;
 					console.log('c is ' +c);
 					res.send("Compression and B/W filter successful").status(200);}
-					},28500);
+					},27500);
 						if(c==files.length){
 				res.send("Compression and B/W filter successful").status(200);
 			}
