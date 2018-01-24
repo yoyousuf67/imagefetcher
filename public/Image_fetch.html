@@ -6,7 +6,7 @@
   </head>
   <body>	
 		<h1>Homepage</h1>
-		  Input image to be stored: <input type="text" id='input' >
+		  Input image to be stored: <p id="crazy"><input type="text" id='input' ></p>
 		  
 		  <p id="count"><button type="submit" onClick="myFun()">Download Image</button> </p>
 		  
@@ -82,7 +82,9 @@ request.send(null);
       if(request.status==200){
 	  var res=request.responseText
       var span=document.getElementById('count');
-	  span.innerHTML=res;
+	  var news=document.getElementById('crazy');
+	  news.innerHTML='<button type="submit" onClick="search()">New Search</button>';
+	  span.innerHTML=res
 		if(myvar<3){
 		myvar++;
 		}
@@ -96,6 +98,9 @@ request.open('GET','/store',true);
 request.send(null);
  }};
  
+ var search=function(){
+ window.location.reload();
+ }
 </script>
 
   </body>
