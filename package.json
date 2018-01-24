@@ -7,7 +7,7 @@
   "engines": {
  "node": "8.9.1"
   },
-  "main": "server.js"
+  "main": "server.js",
   "scripts": {
     "deploy": "gcloud app deploy",
     "start": "node server.js",
