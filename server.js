@@ -348,7 +348,10 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'image_fetch.html'));
 });
 
-var port = 8080; // Use 8080 for local development because you might already have apache running on 80
+
+
+app.set('port', process.env.PORT || 8080);
+/*var port = 8080; // Use 8080 for local development because you might already have apache running on 80
 app.listen(8080, function () {
   console.log(`listening on port ${port}!`);
-});
+});*/

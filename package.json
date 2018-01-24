@@ -4,7 +4,7 @@
   "description": "Fetch images and store them",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node .bin/www", "deploy": "gcloud preview app deploy"
   },
   "author": "",
   "license": "ISC",
