@@ -302,8 +302,8 @@ app.get('/bw', function (req, res){
 					 .write(fileName); // save
 						console.log("haa");
 					console.log(c+' c '+files.length+' fl' );
-					setTimeout(function(){c=files.length;
-					res.send("Compression and B/W filter successful").status(200);},35000);
+					setTimeout(function(){if(c<files.length){c=files.length+3;
+					res.send("Compression and B/W filter successful").status(200);}},35000);
 						if(c==files.length){
 				res.send("Compression and B/W filter successful").status(200);
 			}
