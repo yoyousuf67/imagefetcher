@@ -20,7 +20,7 @@ var BUCKET_NAME = 'imagescraper1'
 // https://googlecloudplatform.github.io/google-cloud-node/#/docs/google-cloud/0.39.0/storage/bucket
 var myBucket = storage.bucket(BUCKET_NAME)
 
-app.use(express.static('public'));
+app.use(express.static((__dirname + '/public'))));
 
 
 app.get('/store',function(req,res){
@@ -348,7 +348,7 @@ app.get('/history',function(req,res){
 
 
 app.get('/', function (req, res) {
-  res.sendFile('image_fetch.html');
+  res.sendFile(path.join(__dirname, 'public', 'Image_fetch.html'));
 });
 
 
