@@ -348,7 +348,7 @@ app.get('/history',function(req,res){
 
 
 app.get('/', function (req, res) {
-  res.sendFile(path.join('image_fetch.html'));
+  res.sendFile('image_fetch.html');
 });
 
 
