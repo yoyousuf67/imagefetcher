@@ -8,4 +8,4 @@ This application has 3 page:
 - node server
 - open "localhost:8080" to access the site
 ### Note: Google Cloud Storage is used for storing images
-### Note: The application is a bit buggy and work is being done to remove those bugs
+
